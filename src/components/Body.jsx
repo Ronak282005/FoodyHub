@@ -3,6 +3,7 @@ import RestaurentCard from "./RestaurentCard";
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import "./Body.css"; // Import the CSS file
 
 let bodyStyle = {
   width:"90%",
@@ -47,46 +48,52 @@ export default function Body(){
     }
     
     return listOfRestaurent.length == 0 ? <Shimmer/> : (
-        <div className="body" >
-          {/* btnStyle */}
-            <div className="filter" style={btnStyle}>     
-              <div className="search">
-                <input type="text" className="search-box" value={searchText} onChange={(e)=>{
-                  setSearchText(e.target.value)
-                }}/>
-                <button onClick={()=>{
-                  const searchRests = filteredRestaurent.filter((res)=>
-                    res.info.name.toLowerCase().includes(searchText.toLowerCase())
-                    
-                  )
-                  setListOfRestaurent(searchRests)
-                  console.log(searchRests);
-                  
-                }}>Search</button>
-              </div>
-              <button className="filter-btn" onClick={
-                () => {
-                  const filteredList = listOfRestaurent.filter((res)=> res.info.avgRating >= 4.5);
-                  
-                  console.log(filteredList);
-                  
-                  setListOfRestaurent(filteredList);
-                }}>
-                Top Rated Restaurent 
-              </button>
-            </div>
-            {/* style={bodyStyle} */}
-            <div className="res-container" style={bodyStyle}>
-              {listOfRestaurent.map((restaurants)=>(
-                <Link key={restaurants.info.id} to={"/restaurants/"+restaurants.info.id}>
-                {
-                  restaurants.info.promot
-                }
-                <RestaurentCard  resData={restaurants}/>
-                </Link>
-              ))}
-            </div>
+      <div className="body">
+      <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="search-box"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+          <button
+            onClick={() => {
+              const searchRests = filteredRestaurent.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setListOfRestaurent(searchRests);
+              console.log(searchRests);
+            }}
+          >
+            Search
+          </button>
         </div>
+        <button
+          className="filter-btn"
+          onClick={() => {
+            const filteredList = listOfRestaurent.filter(
+              (res) => res.info.avgRating >= 4.5
+            );
+            console.log(filteredList);
+            setListOfRestaurent(filteredList);
+          }}
+        >
+          Top Rated Restaurant
+        </button>
+      </div>
+      <div className="res-container">
+        {listOfRestaurent.map((restaurants) => (
+          <Link key={restaurants.info.id} to={"/restaurants/" + restaurants.info.id}>
+            <div className="restaurent-card">
+              <RestaurentCard resData={restaurants} />
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
     )
 }
 

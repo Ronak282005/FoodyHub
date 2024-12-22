@@ -1,0 +1,52 @@
+/* Header.css */
+
+.header {
+    border: 2px dashed black;
+    height: 4rem; /* Increased height for better spacing */
+    padding: 10px 25px; /* Adjusted padding for better layout */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa; /* Light background color */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .logo-container {
+    font-size: 1.5rem; /* Increased font size for logo */
+  }
+  
+  .nav-items {
+    display: flex;
+    align-items: center; /* Center items vertically */
+  }
+  
+  .nav-items ul {
+    display: flex;
+    gap: 2rem;
+    padding: 0;
+    list-style: none; /* Remove default list styling */
+  }
+  
+  .nav-items a {
+    text-decoration: none; /* Remove underline from links */
+    color: #007bff; /* Link color */
+    transition: color 0.3s; /* Smooth color transition */
+  }
+  
+  .nav-items a:hover {
+    color: #0056b3; /* Darker color on hover */
+  }
+  
+  .login {
+    padding: 0.5rem 1rem; /* Padding for button */
+    border: none;
+    border-radius: 4px; /* Rounded corners */
+    background-color: #007bff; /* Button color */
+    color: white; /* Button text color */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth background transition */
+  }
+  
+  .login:hover {
+    background-color: #0056b3; /* Darker button color on hover */
+  }
